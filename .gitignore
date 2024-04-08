@@ -1,2 +1,16 @@
-BACKEND-PA/.env
-BACKEND-PA/node_modules
+# Arquivos de configuração específicos do ambiente
+.env
+
+# Dependências instaladas pelo npm
+/node_modules
+
+# Arquivos de build ou compilados
+/build
+/dist
+
+# Arquivos de logs
+/logs
+*.log
+
+# Arquivos temporários
+.tmp
