@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Backend-PA
-  description: documentation of api
+  description: Documentation of API
   version: 1.0.0
 
 paths:
@@ -11,9 +11,139 @@ paths:
       responses:
         "200":
           description: OK
-  /gastos:
+        "500":
+          description: Erro interno do servidor
+  /createUser:
+    post:
+      summary: Cria um novo usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "201":
+          description: Usuário criado com sucesso
+        "500":
+          description: Erro interno do servidor
+  /updateUser:
+    put:
+      summary: Atualiza um usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: Usuário atualizado com sucesso
+        "404":
+          description: Usuário não encontrado
+        "500":
+          description: Erro interno do servidor
+  /createGasto:
+    post:
+      summary: Cria um gasto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Gasto"
+      responses:
+        "200":
+          description: Usuário atualizado com sucesso
+        "404":
+          description: Usuário não encontrado
+        "500":
+          description: Erro interno do servidor
+  /updateGasto:
+    put:
+      summary: Atualiza um gasto
+      parameters:
+        - in: path
+          name: id
+          description: ID do gasto a ser atualizado
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Gasto"
+      responses:
+        "200":
+          description: Gasto atualizado com sucesso
+        "404":
+          description: Gasto não encontrado
+        "500":
+          description: Erro interno do servidor
+
+  /deleteGasto:
+    delete:
+      summary: Deleta um gasto
+      parameters:
+        - in: path
+          name: id
+          description: ID do gasto a ser deletado
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Gasto"
+      responses:
+        "200":
+          description: Gasto deletado com sucesso
+        "404":
+          description: Gasto não encontrado
+        "500":
+          description: Erro interno do servidor
+
+  /getUser:
     get:
-      summary: Retorna todos os gastos
+      summary: Retorna um usuário pelo ID
+      parameters:
+        - in: path
+          name: id
+          description: ID do usuário a ser retornado
+          required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: OK
+        "404":
+          description: Usuário não encontrado
+        "500":
+          description: Erro interno do servidor
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+    Gasto:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        custo:
+          type: number

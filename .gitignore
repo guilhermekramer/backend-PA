@@ -2,7 +2,6 @@
 .env
 
 # Dependências instaladas pelo npm
-/node_modules
 
 # Arquivos de build ou compilados
 /build
