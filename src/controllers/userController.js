@@ -1,6 +1,6 @@
 const userService = require("../service/userService");
 
-const createUserController = async (response) => {
+const createUserController = async (response, request) => {
   console.log("Request:" + request.body);
   try {
     const userRequest = request.body;
@@ -14,7 +14,7 @@ const createUserController = async (response) => {
   }
 };
 
-const getAllUsersController = async (response) => {
+const getAllUsersController = async (response, request) => {
   try {
     const users = await userService.getAllUsers();
     return users;

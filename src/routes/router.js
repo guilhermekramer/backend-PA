@@ -4,7 +4,9 @@ const userController = require("../controllers/userController");
 const gastoController = require("../controllers/gastoController");
 
 router.get("/users", userController.getAllUsersController);
-router.post("/createUser", userController.createUserController);
+router.post("/createUser", async (req, res) => {
+  await userController.createUserController(req, res);
+});
 router.post("/deleteUser", userController.deleteUserController);
 router.get("/user/:id", userController.getUserByIdController);
 router.put("/updateUser", userController.updateUserController);
