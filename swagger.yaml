@@ -8,6 +8,8 @@ paths:
   /users:
     get:
       summary: Retorna todos os usuários
+      tags:
+        - Users
       responses:
         "200":
           description: OK
@@ -16,6 +18,8 @@ paths:
   /createUser:
     post:
       summary: Cria um novo usuário
+      tags:
+        - Users
       requestBody:
         required: true
         content:
@@ -35,6 +39,8 @@ paths:
   /updateUser:
     put:
       summary: Atualiza um usuário
+      tags:
+        - Users
       requestBody:
         required: true
         content:
@@ -51,6 +57,8 @@ paths:
   /createGasto:
     post:
       summary: Cria um gasto
+      tags:
+        - Gastos
       requestBody:
         required: true
         content:
@@ -67,6 +75,8 @@ paths:
   /updateGasto:
     put:
       summary: Atualiza um gasto
+      tags:
+        - Gastos
       parameters:
         - in: path
           name: id
@@ -91,6 +101,8 @@ paths:
   /deleteGasto:
     delete:
       summary: Deleta um gasto
+      tags:
+        - Gastos
       parameters:
         - in: path
           name: id
@@ -115,6 +127,8 @@ paths:
   /getUser:
     get:
       summary: Retorna um usuário pelo ID
+      tags:
+        - Users
       parameters:
         - in: path
           name: id
