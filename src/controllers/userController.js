@@ -1,7 +1,8 @@
 const userService = require("../service/userService");
 
-const createUserController = async (response, request) => {
+const createUserController = async (request, response) => {
   console.log("Request:" + request.body);
+
   try {
     const userRequest = request.body;
     const User = await userService.createUser(userRequest);
@@ -14,13 +15,14 @@ const createUserController = async (response, request) => {
   }
 };
 
-const getAllUsersController = async (response, request) => {
+const getAllUsersController = async (req, res) => {
+  console.log("");
   try {
     const users = await userService.getAllUsers();
-    return users;
+    return res.status(200).json(users);
   } catch (error) {
     console.log("Erro ao buscar users: " + error);
-    return response.status(500).json({ error: "Erro De servidor" });
+    return req.status(500).json({ error: "Erro De servidor" });
   }
 };
 

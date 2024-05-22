@@ -11,7 +11,7 @@ services:
     ports:
       - "3001:3001"
     volumes:
-      - /home/usuario/Documentos/backend-PA/backend-PA:/app
+      - .:/code
 
   postgres:
     container_name: postgres

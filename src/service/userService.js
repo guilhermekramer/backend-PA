@@ -6,7 +6,7 @@ const getAllUsers = async () => {
     console.log(user);
     return user;
   } catch (error) {
-    console.log("Erro no método de Serviço: " + error);
+    console.log("Erro no método de servco: " + error);
     return error;
   }
 };
@@ -29,7 +29,6 @@ const createUser = async (user) => {
   try {
     const User = await prisma.user.create({
       data: {
-        id: user.id,
         name: user.name,
         email: user.email,
         created_at: new Date(),
